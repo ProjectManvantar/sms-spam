@@ -41,7 +41,7 @@ model = pickle.load(open("model.pkl", 'rb'))
 st.markdown("""
 <style>
 .stApp {
-background-image: url("https://example.com/background.jpg");
+background-image: url("https://wallpapershome.com/images/pages/pic_h/16745.jpg");
 background-attachment: fixed;
 background-size: cover;
 }
