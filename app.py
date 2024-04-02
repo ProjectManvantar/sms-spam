@@ -3,58 +3,63 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 import streamlit as st
-import pickle 
+import pickle
 import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
 
+# ... rest of your code ...
 
-def transform_text(text):
-    text = text.lower()
-    text = nltk.word_tokenize(text)
+# Add a background image
+st.set_page_config(page_title="SMS Spam Detection Model", page_icon=":envelope:", layout="wide", initial_sidebar_state="expanded")
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://www.istockphoto.com/photo/artificial-intelligence-processor-unit-powerful-quantum-ai-component-on-pcb-gm1464561797-497228177?utm_campaign=category_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fbackgrounds&utm_medium=affiliate&utm_source=unsplash&utm_term=backgrounds%3A%3A%3A");
+        background-attachment: fixed;
+        background-size: cover
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-    y = []
-    for i in text:
-        if i.isalnum():
-            y.append(i)
+col1, col2 = st.columns(2)
 
-    text = y[:]
-    y.clear()
+with col1:
+    st.title("SMS Spam Detection Model")
+    st.write("*Great to See YOU Here!!!*")
+    st.write("This app predicts whether an SMS is spam or not based on the text of the message.")
 
-    for i in text:
-        if i not in stopwords.words('english') and i not in string.punctuation:
-            y.append(i)
+with col2:
+    st.image("https://example.com/your-image.jpg", width=300)
 
-    text = y[:]
-    y.clear()
+input_sms = st.text_input("Enter the SMS", placeholder="Type your SMS here...", key="input")
 
-    for i in text:
-        y.append(ps.stem(i))
+if st.button('Predict', key="predict"):
+    with st.spinner('Processing...'):
+        # 1. preprocess
+        transformed_sms = transform_text(input_sms)
+        st.write("**Processed Text:**", transformed_sms)
 
-    return " ".join(y)
+        # 2. vectorize
+        vector_input = tk.transform([transformed_sms])
 
+        # 3. predict
+        result = model.predict(vector_input)[0]
 
-tk = pickle.load(open("vectorizer.pkl", 'rb'))
-model = pickle.load(open("model.pkl", 'rb'))
-
-st.title("SMS Spam Detection Model")
-st.write("*Great to See YOU Here!!!*")
-    
-
-input_sms = st.text_input("Enter the SMS")
-
-if st.button('Predict'):
-
-    # 1. preprocess
-    transformed_sms = transform_text(input_sms)
-    # 2. vectorize
-    vector_input = tk.transform([transformed_sms])
-    # 3. predict
-    result = model.predict(vector_input)[0]
     # 4. Display
     if result == 1:
         st.header("Spam")
+        st.write("The SMS you entered is predicted to be spam.")
     else:
         st.header("Not Spam")
+        st.write("The SMS you entered is predicted to be not spam.")
+
+    # Add a feedback mechanism
+    user_feedback = st.selectbox("Was the prediction correct?", ["Yes", "No"])
+    if user_feedback:
+        st.write(f"Thanks for your feedback! You said the prediction was {user_feedback}.")
