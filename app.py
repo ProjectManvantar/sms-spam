@@ -54,11 +54,10 @@ background-size: cover;
 
 # Add a title, a subheader, and an image of Shankar Babu
 st.title("SMS Spam Detection Model")
-st.subheader("A project by Shrudex, under the guidance of Shankar Babu 🌟")
-st.image("https://wallpapertag.com/wallpaper/full/4/e/a/142810-free-download-4k-nature-wallpapers-3840x2160-computer.jpg", width=300)
+st.subheader("project under the guidance of Shankar Babu Sir 🌟")
 
 # Add an input box for the SMS
-input_sms = st.text_input("Enter the SMS", placeholder="Type here...", max_chars=500)
+input_sms = st.text_input("Enter the SMS", help="Type your SMS here...", max_chars=500)
 
 # Add a button to predict
 if st.button('Predict', key='predict'):
