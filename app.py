@@ -79,4 +79,4 @@ if st.button('Predict', key='predict'):
         st.warning("Please enter an SMS.")
 
 # Add the "About Us" section to the bottom of the web page in a single line
-st.markdown("<p style='text-align: center;'>Made with ❤️‍🔥 by Shrudex👨🏻‍💻</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Privacy and Security is our Priority</p>", unsafe_allow_html=True)
