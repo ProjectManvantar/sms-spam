@@ -41,24 +41,19 @@ model = pickle.load(open("model.pkl", 'rb'))
 st.markdown("""
 <style>
 .stApp {
-background-image: url("https://example.com/background.jpg");
+background-image: url("https://wallpapershome.com/images/pages/pic_h/16745.jpg");
 background-attachment: fixed;
 background-size: cover;
-}
-.stButton > button {
-    color: white;
-    background-color: #0047AB;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# Add a title, a subheader, and an image of Shankar Babu
+# Add a title and a subheader
 st.title("SMS Spam Detection Model")
-st.subheader("A project by Shrudex, under the guidance of Shankar Babu 🌟")
-st.image("https://example.com/shankar_babu.jpg", width=300)
+st.subheader("Made with ❤️‍🔥 by Shrudex👨🏻‍💻")
 
 # Add an input box for the SMS
-input_sms = st.text_input("Enter the SMS", help="Type your SMS here...", max_chars=500)
+input_sms = st.text_input("Enter the SMS", placeholder="Type here...", max_chars=500)
 
 # Add a button to predict
 if st.button('Predict', key='predict'):
@@ -77,7 +72,3 @@ if st.button('Predict', key='predict'):
             st.success("Not Spam")
     else:
         st.warning("Please enter an SMS.")
-
-# Add some information about Shankar Babu
-st.subheader("About Shankar Babu 👨‍🏫")
-st.write("Shankar Babu is our guide for this project. He is a highly experienced and knowledgeable professor in the field of computer science. His guidance and support have been invaluable to us throughout this project.")
