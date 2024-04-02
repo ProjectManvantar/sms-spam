@@ -41,7 +41,7 @@ model = pickle.load(open("model.pkl", 'rb'))
 st.markdown("""
 <style>
 .stApp {
-background-image: url("https://wallpapertag.com/wallpaper/full/4/e/a/142810-free-download-4k-nature-wallpapers-3840x2160-computer.jpg");
+background-image: url("https://wallpaperaccess.com/full/1853649.jpg");
 background-attachment: fixed;
 background-size: cover;
 }
