@@ -57,7 +57,7 @@ st.title("SMS Spam Detection Model")
 st.subheader('"SMS spam is a growing problem, but with the help of machine learning, we can fight back!"')
 
 # Partition the web page into two columns
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 # Add the "About Us" section to the left column
 with col1:
