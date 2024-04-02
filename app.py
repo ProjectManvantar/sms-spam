@@ -68,21 +68,17 @@ with col2:
         unsafe_allow_html=True,
     )
 
-input_sms = st.text_input("Enter the SMS", placeholder="Type your SMS here...", key="input")
 
-if st.button('Predict', key="predict"):
-    with st.spinner('Processing...'):
-        # 1. preprocess
-        transformed_sms = transform_text(input_sms)
-        st.write("**Processed Text:**", transformed_sms)
+input_sms = st.text_input("Enter the SMS")
 
-        # 2. vectorize
-        vector_input = tk.transform([transformed_sms])
+if st.button('Predict'):
 
-        # 3. predict
-        result = model.predict(vector_input)[0]
-
-    # 4. Display
+    # 1. preprocess
+    transformed_sms = transform_text(input_sms)
+    # 2. vectorize
+    vector_input = tk.transform([transformed_sms])
+    # 3. predict
+    result = model.predict(vector_input)[0]
     if result == 1:
         st.header("Spam")
         st.write("The SMS you entered is predicted to be spam.")
