@@ -39,54 +39,27 @@ model = pickle.load(open("model.pkl", 'rb'))
 
 # Add a background image
 st.set_page_config(page_title="SMS Spam Detection Model", page_icon=":envelope:", layout="wide", initial_sidebar_state="expanded")
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-image: url("https://wallpaperaccess.com/full/2819254.jpg");
-        background-attachment: fixed;
-        background-size: cover
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
-col1, col2 = st.columns(2)
+# Add a sidebar
+st.sidebar.title("About")
+st.sidebar.write("Made with ❤️‍🔥 by Shrudex👨🏻‍💻")
 
-with col1:
-    st.title("SMS Spam Detection Model")
-    st.write("*Great to See YOU Here!!!*")
-    st.write("This app predicts whether an SMS is spam or not based on the text of the message.")
+# Main page
+st.title("SMS Spam Detection Model")
+st.write("Enter your SMS below to check if it's spam or not.")
 
-with col2:
-    st.markdown(
-        f"""
-        <div style="background-image: url('https://wallpaperaccess.com/full/2819254.jpg'); background-position: center; background-repeat: no-repeat; background-size: contain;">
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+input_sms = st.text_area("Enter the SMS", height=150)
 
-
-input_sms = st.text_input("Enter the SMS")
-
-if st.button('Predict'):
-
-    # 1. preprocess
-    transformed_sms = transform_text(input_sms)
-    # 2. vectorize
-    vector_input = tk.transform([transformed_sms])
-    # 3. predict
-    result = model.predict(vector_input)[0]
-    if result == 1:
-        st.header("Spam")
-        st.write("The SMS you entered is predicted to be spam.")
-    else:
-        st.header("Not Spam")
-        st.write("The SMS you entered is predicted to be not spam.")
-
-    # Add a feedback mechanism
-    user_feedback = st.selectbox("Was the prediction correct?", ["Yes", "No"])
-    if user_feedback:
-        st.write(f"Thanks for your feedback! You said the prediction was {user_feedback}.")
+if st.button('Predict', key='predict'):
+    with st.spinner("Analyzing SMS..."):
+        # 1. preprocess
+        transformed_sms = transform_text(input_sms)
+        # 2. vectorize
+        vector_input = tk.transform([transformed_sms])
+        # 3. predict
+        result = model.predict(vector_input)[0]
+        # 4. Display
+        if result == 1:
+            st.error("Spam")
+        else:
+            st.success("Not Spam")
