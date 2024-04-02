@@ -62,14 +62,8 @@ with col1:
 with col2:
     st.markdown(
         f"""
-        <style>
-        .stApp {{
-            background-image: url("https://wallpaperaccess.com/full/2819254.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }}
-        </style>
+        <div style="background-image: url('https://wallpaperaccess.com/full/2819254.jpg'); background-position: center; background-repeat: no-repeat; background-size: contain;">
+        </div>
         """,
         unsafe_allow_html=True,
     )
