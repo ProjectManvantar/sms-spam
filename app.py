@@ -56,34 +56,27 @@ background-size: cover;
 st.title("SMS Spam Detection Model")
 st.subheader('"SMS spam is a growing problem, but with the help of machine learning, we can fight back!"')
 
-# Partition the web page into two columns with equal width
-col1, col2 = st.columns([1, 5])
+# Add the SMS spam detection input and button
+# Add an input box for the SMS
+input_sms = st.text_input("Enter the SMS", help="Type your SMS here...", max_chars=500)
 
-# Add the "About Us" section to the left column
-with col1:
-    st.subheader("About Us")
-    st.write("We are a team of passionate individuals dedicated to fighting SMS spam. Our goal is to provide an easy-to-use and effective solution for detecting and filtering out unwanted SMS messages.")
-    st.write("Our model is trained on a large dataset of SMS messages and uses advanced machine learning techniques to accurately classify messages as spam or not spam.")
-
-# Add the SMS spam detection input and button to the right column
-with col2:
-    # Add an input box for the SMS
-    input_sms = st.text_input("Enter the SMS", help="Type your SMS here...", max_chars=500)
-
-    # Add a button to predict
-    if st.button('Predict', key='predict'):
-        # Check if the input is not empty
-        if input_sms:
-            # 1. preprocess
-            transformed_sms = transform_text(input_sms)
-            # 2. vectorize
-            vector_input = tk.transform([transformed_sms])
-            # 3. predict
-            result = model.predict(vector_input)[0]
-            # 4. Display
-            if result == 1:
-                st.error("Spam")
-            else:
-                st.success("Not Spam")
+# Add a button to predict
+if st.button('Predict', key='predict'):
+    # Check if the input is not empty
+    if input_sms:
+        # 1. preprocess
+        transformed_sms = transform_text(input_sms)
+        # 2. vectorize
+        vector_input = tk.transform([transformed_sms])
+        # 3. predict
+        result = model.predict(vector_input)[0]
+        # 4. Display
+        if result == 1:
+            st.error("Spam")
         else:
-            st.warning("Please enter an SMS.")
+            st.success("Not Spam")
+    else:
+        st.warning("Please enter an SMS.")
+
+# Add the "About Us" section to the bottom of the web page in a single line
+st.markdown("<p style='text-align: center;'>Made with ❤️‍🔥 by Shrudex👨🏻‍💻</p>", unsafe_allow_html=True)
