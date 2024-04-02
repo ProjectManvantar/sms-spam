@@ -38,20 +38,32 @@ tk = pickle.load(open("vectorizer.pkl", 'rb'))
 model = pickle.load(open("model.pkl", 'rb'))
 
 # Add a background image
-st.set_page_config(page_title="SMS Spam Detection Model", page_icon=":envelope:", layout="wide", initial_sidebar_state="expanded")
+st.markdown("""
+<style>
+.stApp {
+background-image: url("https://wallpapertag.com/wallpaper/full/4/e/a/142810-free-download-4k-nature-wallpapers-3840x2160-computer.jpg");
+background-attachment: fixed;
+background-size: cover;
+}
+.stButton > button {
+    color: white;
+    background-color: #0047AB;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# Add a sidebar
-st.sidebar.title("About")
-st.sidebar.write("Made with ❤️‍🔥 by Shrudex👨🏻‍💻")
-
-# Main page
+# Add a title, a subheader, and an image of Shankar Babu
 st.title("SMS Spam Detection Model")
-st.write("Enter your SMS below to check if it's spam or not.")
+st.subheader("A project by Shrudex, under the guidance of Shankar Babu 🌟")
+st.image("https://wallpapertag.com/wallpaper/full/4/e/a/142810-free-download-4k-nature-wallpapers-3840x2160-computer.jpg", width=300)
 
-input_sms = st.text_area("Enter the SMS", height=150)
+# Add an input box for the SMS
+input_sms = st.text_input("Enter the SMS", placeholder="Type here...", max_chars=500)
 
+# Add a button to predict
 if st.button('Predict', key='predict'):
-    with st.spinner("Analyzing SMS..."):
+    # Check if the input is not empty
+    if input_sms:
         # 1. preprocess
         transformed_sms = transform_text(input_sms)
         # 2. vectorize
@@ -63,3 +75,9 @@ if st.button('Predict', key='predict'):
             st.error("Spam")
         else:
             st.success("Not Spam")
+    else:
+        st.warning("Please enter an SMS.")
+
+# Add some information about Shankar Babu
+st.subheader("About Shankar Babu 👨‍🏫")
+st.write("Shankar Babu is our guide for this project. He is a highly experienced and knowledgeable professor in the field of computer science. His guidance and support have been invaluable to us throughout this project.")
