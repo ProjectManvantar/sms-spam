@@ -51,10 +51,6 @@ st.markdown("""
     color: black;
 }
 
-.stApp h2 {
-    color: grey;
-}
-
 .stButton > button {
     color: white;
     background-color: #0047AB;
@@ -64,7 +60,7 @@ st.markdown("""
 
 # Add a title and a quote
 st.title("SMS Spam Detection Model")
-st.subheader('"SMS spam is a growing problem, but with the help of machine learning, we can fight back!"')
+st.markdown('<p style="color: grey;">"SMS spam is a growing problem, but with the help of machine learning, we can fight back!"</p>', unsafe_allow_html=True)
 
 # Add the SMS spam detection input and button
 # Add an input box for the SMS
