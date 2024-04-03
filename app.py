@@ -60,11 +60,11 @@ st.markdown("""
 
 # Add a title and a quote
 st.title("SMS Spam Detection Model")
-st.markdown('<p style="color: grey;">"SMS spam is a growing problem, but with the help of machine learning, we can fight back!"</p>', unsafe_allow_html=True)
+st.markdown('<p style="color: black;">"SMS spam is a growing problem, but with the help of machine learning, we can fight back!"</p>', unsafe_allow_html=True)
 
 # Add the SMS spam detection input and button
 # Add an input box for the SMS
-input_sms = st.markdown('<p style="color: grey;">Enter the SMS...</p>', unsafe_allow_html=True)
+input_sms = st.markdown('<p style="color: black;">Enter the SMS...</p>', unsafe_allow_html=True)
 input_sms = st.text_input("", help="Type your SMS here...", max_chars=500)
 
 # Add a button to predict
