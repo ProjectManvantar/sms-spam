@@ -44,8 +44,13 @@ st.markdown("""
     background-image: url("https://wallpapershome.com/images/pages/pic_h/16745.jpg");
     background-attachment: fixed;
     background-size: cover;
+    color: grey;
+}
+
+.stApp h1, .stApp h2 {
     color: black;
 }
+
 .stButton > button {
     color: white;
     background-color: #0047AB;
@@ -80,4 +85,4 @@ if st.button('Predict', key='predict'):
         st.warning("Please enter an SMS.")
 
 # Add the "About Us" section to the bottom of the web page in a single line
-st.markdown("<p style='text-align: center; color: black;'>Beware of Spam SMS ,They might empty your bank account</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: grey;'>Beware of Spam SMS ,They might empty your bank account</p>", unsafe_allow_html=True)
