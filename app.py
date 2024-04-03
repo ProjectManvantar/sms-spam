@@ -64,7 +64,7 @@ st.markdown('<p style="color: grey;">"SMS spam is a growing problem, but with th
 
 # Add the SMS spam detection input and button
 # Add an input box for the SMS
-input_sms = st.text_input("Enter the SMS", help="Type your SMS here...", max_chars=500)
+input_sms = st.text_input("", placeholder='<p style="color: grey;">Enter the SMS...</p>', help="Type your SMS here...", max_chars=500)
 
 # Add a button to predict
 if st.button('Predict', key='predict'):
