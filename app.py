@@ -51,6 +51,10 @@ st.markdown("""
     color: black;
 }
 
+.stApp h2 {
+    color: black;
+}
+
 .stButton > button {
     color: white;
     background-color: #0047AB;
