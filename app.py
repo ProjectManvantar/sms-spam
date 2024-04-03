@@ -52,7 +52,7 @@ st.markdown("""
 }
 
 .stApp h2 {
-    color: black;
+    color: grey;
 }
 
 .stButton > button {
