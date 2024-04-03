@@ -49,6 +49,9 @@ background-size: cover;
     color: white;
     background-color: #0047AB;
 }
+body {
+    color: grey;
+}
 </style>
 """, unsafe_allow_html=True)
 
